@@ -8,6 +8,10 @@
 
 class Persona:
 
+    def __init__(self):
+        self.nombre = ''
+        self.edad = 0
+
     def bautizar(self, nombre, edad):
         self.nombre = nombre
         self.edad = edad
@@ -19,6 +23,8 @@ class Persona:
         self.edad = self.edad + 1
 
 persona1 = Persona()
+persona1.saludar()
+
 persona1.bautizar("Maria", 25)
 persona1.saludar()
 persona1.cumplir_anyos()
