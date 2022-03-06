@@ -39,3 +39,29 @@ class Jugador:
         
         return suma
     
+    def jugar(self, mazo):
+        interfaz = Interfaz()
+        solicitar = True
+        titulo = "Opciones:\n1- Pedir Carta\n2- Quedarse\nValor:"
+        
+        while(solicitar and self.sumar_cartas() <= 21):
+             # Le mostramos al jugador sus cartas
+            self.imprimir()
+             # Le solicitamos la accion a realizar
+            valor = interfaz.solicitar_numero_entero(titulo)
+            if(valor == 1):     # El jugador solicita una carta
+                 # Se agrega a las cartas del jugador la que se le ha repartido
+                self.cartas.append(mazo.obtener_siguiente_carta())
+                 # Neva carta repartida
+                self.cartas[-1].imprimir()
+            elif(valor == 2):
+                solicitar = False
+                
+         # Devolvemos la suma de las cartas del jugador
+        return self.sumar_cartas()
+
+
+if __name__ == "__main__":
+    mazo = Mazo()
+    jugador1 = Jugador("Juan")
+    jugador1.jugar(mazo)
