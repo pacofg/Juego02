@@ -32,7 +32,10 @@ class Repartidor:
         for i in range(len(self.jugadores)):
             suma = self.jugadores[i].jugar(self.mazo)
             resultado = 21 - suma
-            if(resultado > valor and resultado < 0):
+             # Gana el que este mas cerca de 21 sin pasarse
+             # En caso de empate en la puntuacion ganara el que tenga menos cartas
+            if(resultado > valor and resultado < 0 or (resultado == valor and 
+                       len(self.jugadores[i].cartas) < len(self.jugadores[ganador].cartas))):
                 valor = resultado
                 ganador = i
             
@@ -45,7 +48,8 @@ class Repartidor:
 
 
 
-j1 = Jugador("Jugador-1")
-j2 = JugadorVirtual("PC-1")
-repartidor = Repartidor([j1,j2])
-repartidor.jugar()
+if __name__ == "__main__":
+    j1 = Jugador("Jugador-1")
+    j2 = JugadorVirtual("PC-1")
+    repartidor = Repartidor([j1,j2])
+    repartidor.jugar()
