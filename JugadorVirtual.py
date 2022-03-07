@@ -3,6 +3,7 @@
 # Imprimir sus cartas
 # Poder sumar el valor de sus cartas
 
+from ctypes.wintypes import PUSHORT
 from mailbox import NoSuchMailboxError
 from socket import CAN_BCM_RX_STATUS
 from Interfaz import Interfaz
@@ -50,7 +51,7 @@ class JugadorVirtual:
          # Seguira la regla de pedir carta si su suma < 16
          
         while(self.sumar_cartas() < 16):
-            self.cartas.append(mazo.obtener_siguiente_carta)
+            self.cartas.append(mazo.obtener_siguiente_carta())
                 
         self.imprimir_juego()
          # Devolvemos la suma de las cartas del jugador
