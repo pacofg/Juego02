@@ -17,14 +17,30 @@ class InterfazJuegoCartas:
         self.dibujar_fondo()
                 
          # Fondo de la carta como un poligono de fondo blanco y borde negro
-        self.dibujar_poligono([50,170,170,50], [55,55,230,230], fill='#FFFFFF', width=2, outline='#000000')
+        # self.dibujar_poligono([50,170,170,50], [55,55,230,230], fill='#FFFFFF', width=2, outline='#000000')
+        self.dibujar_rectangulos(4, 50, 55, 120, 175, 5)
          # Dibujamos una carta
         self.dibujar_carta()
+        
+        self.dibujar_etiquetas()
                 
          # Mostramos la ventan
         self.ventana.mainloop()
          # Cualquier cosa que tengamos despues ya no se vera
 
+    def dibujar_etiquetas(self):
+        etiqueta = Label(self.ventana, text="Computadora 1", background='Green', foreground='White', font='arial 15 bold')
+        etiqueta.place(x=50, y=20)
+        etiqueta = Label(self.ventana, text="Jugador 1", background='Green', foreground='White', font='arial 15 bold')
+        etiqueta.place(x=50, y=360)
+        
+        
+    def dibujar_rectangulos(self, cantidad, xInicio, yInicio, xTam, yTam, margen=10):
+        for i in range(cantidad):
+            self.dibujar_poligono([xInicio, xInicio+xTam, xInicio+xTam, xInicio], [yInicio, yInicio, yInicio+yTam, yInicio+yTam], fill='#FFFFFF', width=2, outline='#000000')
+            xInicio = xInicio + xTam + margen
+        
+        
     def dibujar_poligono(self, x, y, **args):
         puntos = []
         for i in range(len(x)):
