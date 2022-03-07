@@ -2,6 +2,7 @@
 # se la ira pasando segun la necesiten
 from Mazo import Mazo
 from Jugador import Jugador
+from JugadorVirtual import JugadorVirtual
 
 class Repartidor:
     
@@ -45,6 +46,6 @@ class Repartidor:
 
 
 j1 = Jugador("Jugador-1")
-j2 = Jugador("Jugador-2")
+j2 = JugadorVirtual("PC-1")
 repartidor = Repartidor([j1,j2])
 repartidor.jugar()
