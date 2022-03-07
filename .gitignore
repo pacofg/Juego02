@@ -1,4 +1,5 @@
 *.log
 node_modules/
 __pycache__/
-Mazo_old*.py
+*_old*.py
+juegoCartas/
