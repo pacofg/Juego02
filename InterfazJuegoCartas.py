@@ -1,6 +1,5 @@
-from email.mime import image
 from tkinter import *
-from turtle import width
+from Carta import Carta
 
 class InterfazJuegoCartas:
     
@@ -19,15 +18,45 @@ class InterfazJuegoCartas:
          # Fondo de la carta como un poligono de fondo blanco y borde negro
         # self.dibujar_poligono([50,170,170,50], [55,55,230,230], fill='#FFFFFF', width=2, outline='#000000')
         self.dibujar_rectangulos(4, 50, 55, 120, 175, 5)
-         # Dibujamos una carta
-        self.dibujar_carta()
         
+        
+        carta1 = Carta(11,"corazones")
+        
+         # Dibujamos una carta
+        self.dibujar_carta(110, 143, carta1.obtener_nombre_archivo())
+        
+         # Etiquetas de los jugadores
         self.dibujar_etiquetas()
-                
+             
+         # Creamos boton para iniciar el juego 
+        self.btnIniciar = Button(self.ventana, text="Iniciar juego", command=self.jugar)        
+         # Creamos boton para pedir carta
+        self.btnSolicitar = Button(self.ventana, text="Solicitar carta", command=self.jugar)        
+         # Creamos boton para quedarse
+        self.btnQuedarse = Button(self.ventana, text="Quedarse", command=self.jugar)
+        
+        self.ocultar_opciones_juego()
+        
          # Mostramos la ventan
         self.ventana.mainloop()
          # Cualquier cosa que tengamos despues ya no se vera
 
+     # Metodo selo para pruebas
+    def jugar(self):
+        print("Iniciamos el juego")
+        self.mostrar_opcionesJuego()
+        
+    def mostrar_opcionesJuego(self):
+        self.btnSolicitar.place(x=700, y=500)
+        self.btnQuedarse.place(x=700, y=550)
+        self.btnIniciar.place_forget()
+        
+        
+    def ocultar_opciones_juego(self):
+        self.btnIniciar.place(x=400, y=300)
+        self.btnSolicitar.place_forget()
+        self.btnQuedarse.place_forget()
+        
     def dibujar_etiquetas(self):
         etiqueta = Label(self.ventana, text="Computadora 1", background='Green', foreground='White', font='arial 15 bold')
         etiqueta.place(x=50, y=20)

@@ -24,7 +24,7 @@ class Carta:
         elif(self.numero == 13):
             valor = "K"
         elif(self.numero == 1):
-            valor = "As"
+            valor = "A"
         else:
             valor = str(self.numero)
         
@@ -34,6 +34,10 @@ class Carta:
          # Las figuras valen 10
         return 10 if self.numero > 10 else self.numero
 
+    def obtener_nombre_archivo(self):
+        return "juegoCartas/" + self.convertir_numero_a_letras() + "_de_" + self.palo + ".png"
+        
+        
 def main():
     carta = Carta(11, "Tréboles")
     carta.imprimir()
